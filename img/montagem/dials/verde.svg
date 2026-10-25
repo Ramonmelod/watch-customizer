@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600">
+  <defs>
+    <radialGradient id="d" cx=".4" cy=".35" r=".75"><stop offset="0" stop-color="#3f7d5e"/><stop offset="1" stop-color="#112d20"/></radialGradient>
+    <rect id="i" x="197" y="200" width="6" height="22" rx="1.5"/>
+  </defs>
+  <circle cx="200" cy="300" r="109" fill="url(#d)"/>
+  <g fill="#ecebe7">
+    <use href="#i"/><use href="#i" transform="rotate(30 200 300)"/><use href="#i" transform="rotate(60 200 300)"/><use href="#i" transform="rotate(90 200 300)"/>
+    <use href="#i" transform="rotate(120 200 300)"/><use href="#i" transform="rotate(150 200 300)"/><use href="#i" transform="rotate(180 200 300)"/><use href="#i" transform="rotate(210 200 300)"/>
+    <use href="#i" transform="rotate(240 200 300)"/><use href="#i" transform="rotate(270 200 300)"/><use href="#i" transform="rotate(300 200 300)"/><use href="#i" transform="rotate(330 200 300)"/>
+    <text x="202" y="264" text-anchor="middle" font-family="Georgia,serif" font-size="24" letter-spacing="-4">GR</text>
+    <text x="200" y="352" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" letter-spacing="2">AUTOMATIC</text>
+  </g>
+</svg>

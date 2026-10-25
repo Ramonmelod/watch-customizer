@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grand Rodolf | Relógios Personalizados</title>
+  <script>
+    document.documentElement.dataset.theme =
+      localStorage.getItem("theme") ||
+      (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  </script>
+  <link rel="icon" href="img/logo-light.png" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#" class="logo">
+        <img class="logo-img logo-img--light" src="img/logo-light.png" alt="" />
+        <img class="logo-img logo-img--dark" src="img/logo-dark.png" alt="" />
+        Grand<span>Rodolf</span>
+      </a>
+      <div class="header__right">
+        <nav class="nav">
+          <a href="#catalogo">Catálogo</a>
+          <a href="#monte">Monte o seu</a>
+          <a href="#contato">Contato</a>
+        </nav>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema"></button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <img class="hero__logo logo-img--light" src="img/logo-light.png" alt="Grand Rodolf" />
+      <img class="hero__logo logo-img--dark" src="img/logo-dark.png" alt="Grand Rodolf" />
+      <h1>Seu relógio, do seu jeito.</h1>
+      <p>Escolha a caixa, escolha a pulseira. Nós montamos para você.</p>
+      <a href="#monte" class="btn">Começar a montar</a>
+    </div>
+  </section>
+
+  <section id="catalogo" class="section">
+    <div class="container">
+      <h2>Catálogo</h2>
+      <div class="filters">
+        <button class="filter active" data-filter="todos">Todos</button>
+        <button class="filter" data-filter="caixa">Caixas</button>
+        <button class="filter" data-filter="pulseira">Pulseiras</button>
+      </div>
+      <div id="grid" class="grid"></div>
+    </div>
+  </section>
+
+  <section id="monte" class="configurator">
+    <div class="configurator__grid">
+      <div class="viewer">
+        <div class="viewer__tools">
+          <button id="tool-zoom" class="tool" title="Ampliar" aria-label="Ampliar">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" /><path d="M21 21l-4.3-4.3M11 8v6M8 11h6" /></svg>
+          </button>
+          <button id="tool-reset" class="tool" title="Restaurar modelo padrão" aria-label="Restaurar modelo padrão">
+            <svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8" /><path d="M3 3v5h5" /></svg>
+          </button>
+        </div>
+
+        <div id="viewer-stage" class="viewer__stage">
+          <div id="viewer-watch" class="watch"></div>
+          <div id="viewer-empty" class="viewer__empty">
+            <img class="logo-img--light" src="img/logo-light.png" alt="" />
+            <img class="logo-img--dark" src="img/logo-dark.png" alt="" />
+            <p>Escolha as peças para começar</p>
+          </div>
+        </div>
+
+        <div id="viewer-thumbs" class="viewer__thumbs"></div>
+        <p class="viewer__hint">Clique numa peça para trocá-la · clique no relógio para ampliar</p>
+      </div>
+
+      <div class="config">
+        <h2 class="serif">Monte o seu relógio</h2>
+        <p class="muted">Escolha cada detalhe e crie um modelo único, do seu jeito.</p>
+        <ol id="stepper" class="stepper"></ol>
+        <div id="steps"></div>
+      </div>
+    </div>
+
+    <div class="buildbar">
+      <div class="buildbar__inner">
+        <div id="bar-watch" class="buildbar__thumb watch"></div>
+        <div class="buildbar__info">
+          <strong class="serif">Seu relógio</strong>
+          <ul id="bar-list" class="buildbar__list"></ul>
+        </div>
+        <p id="bar-total" class="buildbar__total"></p>
+        <div class="buildbar__actions">
+          <button id="bar-clear" class="btn btn--ghost">Limpar</button>
+          <a id="bar-next" class="btn" target="_blank" rel="noopener">Próximo passo →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contato" class="footer">
+    <div class="container">
+      <p>Grand Rodolf &copy; <span id="year"></span> · Relógios personalizados</p>
+    </div>
+  </footer>
+
+  <div id="lightbox" class="lightbox" hidden>
+    <button class="lightbox__close" aria-label="Fechar">&times;</button>
+    <img id="lightbox-img" alt="" />
+    <p id="lightbox-caption"></p>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
