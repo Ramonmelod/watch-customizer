@@ -146,7 +146,7 @@ a { color: inherit; text-decoration: none; }
 svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 
 .configurator { background: var(--surface-2); border-block: 1px solid var(--border); }
-.configurator__grid { display: grid; grid-template-columns: 1fr 1fr; }
+.configurator__grid { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); }
 
 /* Coluna da esquerda: visualização */
 .viewer {
@@ -170,9 +170,10 @@ svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width:
 .viewer__stage {
   position: relative; flex: none;
   height: clamp(320px, calc(100vh - 360px), 640px); aspect-ratio: 2 / 3;
+  max-width: 100%;
   display: grid; place-items: center; cursor: zoom-in;
 }
-.viewer__stage .watch { height: 100%; filter: drop-shadow(0 24px 30px rgba(0, 0, 0, 0.35)); transition: transform 0.35s; }
+.viewer__stage .watch { height: 100%; max-width: 100%; filter: drop-shadow(0 24px 30px rgba(0, 0, 0, 0.35)); transition: transform 0.35s; }
 .viewer--zoom .viewer__stage { cursor: zoom-out; }
 .viewer--zoom .viewer__stage .watch { transform: scale(1.6); }
 .viewer--zoom .viewer__thumbs, .viewer--zoom .viewer__hint { visibility: hidden; }
@@ -223,7 +224,7 @@ svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width:
 .step.open .step__body { display: block; }
 
 .groups { display: flex; flex-wrap: wrap; gap: 20px 0; }
-.group { flex: 1 1 auto; padding-right: 24px; }
+.group { flex: 1 1 auto; min-width: 0; padding-right: 24px; }
 .group + .group:not(.group--wide) { padding-left: 24px; border-left: 1px solid var(--border); }
 .group--wide { flex-basis: 100%; padding-right: 0; border-left: 0 !important; padding-left: 0 !important; }
 .group h4 { font-size: 0.85rem; font-weight: 500; margin-bottom: 10px; }
@@ -231,7 +232,7 @@ svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width:
 .opts { display: flex; gap: 12px; flex-wrap: wrap; }
 .carousel { position: relative; }
 .carousel .opts {
-  flex-wrap: nowrap; overflow-x: auto; scroll-snap-type: x mandatory;
+  flex-wrap: nowrap; overflow: hidden; scroll-snap-type: x mandatory;
   scrollbar-width: none; padding: 4px 56px 4px 4px;
 }
 .carousel .opts::-webkit-scrollbar { display: none; }
@@ -247,14 +248,14 @@ svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width:
   display: flex; flex-direction: column; align-items: center; gap: 6px;
   background: none; border: 0; padding: 0; color: var(--muted); font: inherit; font-size: 0.75rem; cursor: pointer;
 }
-.opt__label { max-width: 110px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.opt__label { max-width: 132px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .opt.selected { color: var(--text); }
 .opt__price { font-size: 0.7rem; color: var(--muted); margin-top: -4px; }
 .opt:hover .opt__img { border-color: var(--accent); }
 .opt.selected .opt__img { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 30%, transparent); }
 
 .opt__img {
-  width: 104px; height: 104px; border-radius: 10px; overflow: hidden; background: var(--slot-bg);
+  width: 128px; height: 128px; border-radius: 10px; overflow: hidden; background: var(--slot-bg);
   border: 2px solid var(--border); transition: border-color 0.2s, box-shadow 0.2s;
 }
 /* canvas 2:3 recortado no centro (quadrado) — mostra a peça inteira */
@@ -304,7 +305,7 @@ svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width:
 }
 
 @media (max-width: 960px) {
-  .configurator__grid { grid-template-columns: 1fr; }
+  .configurator__grid { grid-template-columns: minmax(0, 1fr); }
   .viewer { position: relative; top: 0; height: auto; padding: 32px 24px 24px 88px; }
   .config { border-left: 0; padding: 32px 20px; }
   .viewer__stage { height: 420px; }

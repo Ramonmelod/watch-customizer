@@ -69,9 +69,14 @@ function groupHTML(g) {
 }
 
 // Empilha as camadas selecionadas (pulseira, caixa, dial, ponteiros)
+// scale: fotos full-bleed (ex.: dials reais) são reduzidas ao tamanho da janela da caixa
 const watchHTML = () =>
   LAYERS.filter((g) => state[g.key])
-    .map((g) => `<img src="${src(state[g.key])}" alt="${state[g.key].name}" style="z-index:${g.layer}" />`)
+    .map((g) => {
+      const o = state[g.key];
+      const scale = o.scale ? `;transform:scale(${o.scale})` : "";
+      return `<img src="${src(o)}" alt="${o.name}" style="z-index:${g.layer}${scale}" />`;
+    })
     .join("");
 
 function renderBuilder() {
@@ -165,7 +170,7 @@ $("#steps").addEventListener("click", (e) => {
   if (arrow) {
     const track = arrow.previousElementSibling;
     const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
-    return track.scrollTo({ left: atEnd ? 0 : track.scrollLeft + track.clientWidth * 0.8, behavior: "smooth" });
+    return track.scrollTo({ left: atEnd ? 0 : track.scrollLeft + track.clientWidth, behavior: "smooth" });
   }
   const head = e.target.closest(".step__head");
   if (head) head.parentElement.classList.toggle("open");
