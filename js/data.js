@@ -30,7 +30,7 @@ const PRODUCTS = [
 // - caixa  scale: largura da caixa em relação ao canvas
 //          window: [x, y, d] centro e diâmetro da borda interna do bezel (onde o dial encosta)
 // - dial   disc:   [x, y, d] centro e diâmetro do disco do mostrador no PNG
-// - ponteiros: centralizados no dial; reach = comprimento do ponteiro de minutos no SVG
+// - ponteiros: pivot: [x, y, alcance] centro de rotação (pino) e distância à ponta mais longa
 //
 // kind: image (peça visual) ou chip (opção só de texto, ex.: tamanho)
 // required: obrigatória para liberar o pedido
@@ -94,13 +94,11 @@ const BUILDER_STEPS = [
     desc: "Selecione o estilo e a cor dos ponteiros.",
     groups: [
       {
-        id: "cor", label: "Ponteiros", kind: "image", layer: 4, prefix: "Ponteiros", required: true, wide: true, zoom: true, reach: 0.245,
+        id: "cor", label: "Ponteiros", kind: "image", layer: 4, prefix: "Ponteiros", required: true, wide: true,
         options: [
-          { id: "prata", name: "Prata", price: 90, img: `${M}/ponteiros/prata.svg` },
-          { id: "dourado", name: "Dourado", price: 110, img: `${M}/ponteiros/dourado.svg` },
-          { id: "preto", name: "Preto", price: 90, img: `${M}/ponteiros/preto.svg` },
-          { id: "azul", name: "Azul", price: 100, img: `${M}/ponteiros/azul.svg` },
-          { id: "lume", name: "Luminova", price: 130, img: `${M}/ponteiros/lume.svg` },
+          { id: "av", name: "AV", price: 90, img: `${M}/ponteiros/PONTEIROS AV.png`, pivot: [0, 0, 0.4852] },
+          { id: "dot", name: "Dot", price: 90, img: `${M}/ponteiros/PONTEIROS DOT.png`, pivot: [0, 0, 0.4853] },
+          { id: "sword", name: "Sword", price: 110, img: `${M}/ponteiros/PONTEIROS SWORD.png`, pivot: [0, 0, 0.4852] },
         ],
       },
     ],
@@ -113,12 +111,13 @@ const BUILDER_STEPS = [
       {
         id: "modelo", label: "Pulseira", kind: "image", layer: 1, prefix: "Pulseira", required: true, wide: true,
         options: [
-          { id: "couro-marrom", name: "Couro marrom", price: 150, img: `${M}/pulseiras/couro-marrom.svg` },
-          { id: "couro-caramelo", name: "Couro caramelo", price: 150, img: `${M}/pulseiras/couro-caramelo.svg` },
-          { id: "aco", name: "Aço inoxidável", price: 260, img: `${M}/pulseiras/aco.svg` },
-          { id: "nato-preta", name: "NATO preta", price: 90, img: `${M}/pulseiras/nato-preta.svg` },
-          { id: "borracha-azul", name: "Borracha azul", price: 120, img: `${M}/pulseiras/borracha-azul.svg` },
-          { id: "borracha-verde", name: "Borracha verde", price: 120, img: `${M}/pulseiras/borracha-verde.svg` },
+          { id: "couro-azul", name: "Couro azul-marinho", price: 150, img: `${M}/pulseiras/Dark Blue Leather Watch Strap Set-montada.png` },
+          { id: "couro-marrom", name: "Couro marrom", price: 150, img: `${M}/pulseiras/Vertical Brown Leather Watch Strap Set-montada.png` },
+          { id: "couro-desgastado", name: "Couro marrom desgastado", price: 150, img: `${M}/pulseiras/Brown Distressed Leather Watch Strap Set-montada.png` },
+          { id: "couro-vintage", name: "Couro marrom vintage", price: 150, img: `${M}/pulseiras/Vintage Brown Leather Watch Strap Set-montada.png` },
+          { id: "couro-caramelo", name: "Couro caramelo", price: 150, img: `${M}/pulseiras/Tan Leather Watch Strap Set-montada.png` },
+          { id: "couro-cinza", name: "Couro cinza", price: 150, img: `${M}/pulseiras/Gray Leather Watch Strap Set-montada.png` },
+          { id: "couro-verde", name: "Couro verde", price: 150, img: `${M}/pulseiras/Vertically Arranged Green Leather Watch Strap-montada.png` },
         ],
       },
     ],

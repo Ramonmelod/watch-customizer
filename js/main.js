@@ -82,7 +82,11 @@ function fit(g, o) {
     const k = (s * wd) / dd;
     return [s * wx - k * dx, s * wy - k * dy, k];
   }
-  if (g.reach) return [s * wx, s * wy, ((s * wd) / 2) * 0.85 / g.reach];
+  if (o.pivot) {
+    const [px, py, pr] = o.pivot;
+    const k = (s * wd * 0.46) / pr;
+    return [s * wx - k * px, s * wy - k * py, k];
+  }
   return [0, 0, o.scale ?? 1];
 }
 
