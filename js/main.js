@@ -69,13 +69,30 @@ function groupHTML(g) {
 }
 
 // Empilha as camadas selecionadas (pulseira, caixa, dial, ponteiros)
-// scale: fotos full-bleed (ex.: dials reais) são reduzidas ao tamanho da janela da caixa
+// O dial é encaixado na janela (borda interna do bezel) da caixa escolhida e os ponteiros no centro do dial.
+// Retorna [x, y, escala] com x/y em fração da largura do canvas (2:3).
+const FRAME = GROUPS.find((g) => g.frame);
+function fit(g, o) {
+  const frame = state[FRAME.key];
+  const s = frame?.scale ?? 1;
+  if (g === FRAME) return [0, 0, s];
+  const [wx, wy, wd] = frame?.window ?? [0, 0, 0.55];
+  if (o.disc) {
+    const [dx, dy, dd] = o.disc;
+    const k = (s * wd) / dd;
+    return [s * wx - k * dx, s * wy - k * dy, k];
+  }
+  if (g.reach) return [s * wx, s * wy, ((s * wd) / 2) * 0.85 / g.reach];
+  return [0, 0, o.scale ?? 1];
+}
+
 const watchHTML = () =>
   LAYERS.filter((g) => state[g.key])
     .map((g) => {
       const o = state[g.key];
-      const scale = o.scale ? `;transform:scale(${o.scale})` : "";
-      return `<img src="${src(o)}" alt="${o.name}" style="z-index:${g.layer}${scale}" />`;
+      const [x, y, k] = fit(g, o);
+      const t = `transform:translate(${(x * 100).toFixed(3)}%,${((y * 200) / 3).toFixed(3)}%) scale(${k.toFixed(4)})`;
+      return `<img src="${src(o)}" alt="${o.name}" style="z-index:${g.layer};${t}" />`;
     })
     .join("");
 
