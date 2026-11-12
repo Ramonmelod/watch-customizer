@@ -1,14 +1,15 @@
 const $ = (sel) => document.querySelector(sel);
 const src = (p) => encodeURI(p.img);
 const brl = (v) => v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
-const label = { caixa: "Caixa", pulseira: "Pulseira" };
+const label = { militar: "Militar", classic: "Classic", diver: "Diver" };
 
 // ---------- Catálogo ----------
 function renderGrid(filter = "todos") {
   const items = PRODUCTS.filter((p) => filter === "todos" || p.type === filter);
-  $("#grid").innerHTML = items
-    .map(
-      (p) => `
+  $("#grid").innerHTML = items.length
+    ? items
+        .map(
+          (p) => `
       <article class="card" data-id="${p.id}">
         <div class="card__img"><img src="${src(p)}" alt="${p.name}" loading="lazy" /></div>
         <div class="card__body">
@@ -17,8 +18,9 @@ function renderGrid(filter = "todos") {
           <p class="price">${p.price ? brl(p.price) : "Sob consulta"}</p>
         </div>
       </article>`
-    )
-    .join("");
+        )
+        .join("")
+    : `<p class="grid__empty">Nenhum relógio ${label[filter] ?? ""} disponível no momento. Novos modelos em breve — fale conosco para encomendar o seu.</p>`;
 }
 
 document.querySelectorAll(".filter").forEach((btn) =>

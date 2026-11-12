@@ -137,6 +137,7 @@ a { color: inherit; text-decoration: none; }
   color: var(--accent); font-weight: 700;
 }
 .price { color: var(--muted); font-size: 0.9rem; }
+.grid__empty { grid-column: 1 / -1; text-align: center; padding: 48px 16px; color: var(--muted); }
 
 /* As fotos são prints de celular: o produto fica um pouco acima do centro */
 .card__img img { object-position: center 44%; }

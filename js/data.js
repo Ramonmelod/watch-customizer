@@ -1,24 +1,27 @@
 // Número do WhatsApp para pedidos (DDI + DDD + número, só dígitos)
 const WHATSAPP = "5500000000000";
 
-// Catálogo de peças. Edite nomes e preços à vontade.
-const PRODUCTS = [
-  { id: "c1", type: "caixa", name: "Field GR Automático", price: 0, img: "caixas-relogio/WhatsApp Image 2026-10-24 at 22.45.08.jpeg" },
-  { id: "c2", type: "caixa", name: "Caixa Modelo 2", price: 0, img: "caixas-relogio/WhatsApp Image 2026-10-24 at 22.45.09.jpeg" },
-  { id: "c4", type: "caixa", name: "Caixa 40mm Titanium Gray", price: 0, img: "caixas-relogio/WhatsApp Image 2026-10-24 at 22.45.11.jpeg" },
-  { id: "c5", type: "caixa", name: "Caixa Modelo 5", price: 0, img: "caixas-relogio/WhatsApp Image 2026-10-24 at 22.45.11 (1).jpeg" },
-  { id: "c6", type: "caixa", name: "Caixa Modelo 6", price: 0, img: "caixas-relogio/WhatsApp Image 2026-10-24 at 22.45.11 (2).jpeg" },
-  { id: "c7", type: "caixa", name: "Caixa Modelo 7", price: 0, img: "caixas-relogio/WhatsApp Image 2026-10-24 at 22.45.12.jpeg" },
-  { id: "c8", type: "caixa", name: "Caixa Modelo 8", price: 0, img: "caixas-relogio/WhatsApp Image 2026-10-24 at 22.45.12 (1).jpeg" },
+// Catálogo de relógios prontos. Edite nomes e preços à vontade.
+const R = "img/Ready Watches";
 
-  { id: "p1", type: "pulseira", name: "Aço Beads of Rice", price: 0, img: "pulseiras/WhatsApp Image 2026-10-24 at 22.45.13.jpeg" },
-  { id: "p2", type: "pulseira", name: "Pulseira Modelo 2", price: 0, img: "pulseiras/WhatsApp Image 2026-10-24 at 22.45.13 (1).jpeg" },
-  { id: "p3", type: "pulseira", name: "Pulseira Modelo 3", price: 0, img: "pulseiras/WhatsApp Image 2026-10-24 at 22.45.14.jpeg" },
-  { id: "p4", type: "pulseira", name: "Pulseira Modelo 4", price: 0, img: "pulseiras/WhatsApp Image 2026-10-24 at 22.45.14 (1).jpeg" },
-  { id: "p5", type: "pulseira", name: "Pulseira Modelo 5", price: 0, img: "pulseiras/WhatsApp Image 2026-10-24 at 22.45.15.jpeg" },
-  { id: "p6", type: "pulseira", name: "Pulseira Modelo 6", price: 0, img: "pulseiras/WhatsApp Image 2026-10-24 at 22.45.15 (1).jpeg" },
-  { id: "p7", type: "pulseira", name: "Nylon Preta Black-Steel", price: 0, img: "pulseiras/WhatsApp Image 2026-10-24 at 22.45.16.jpeg" },
-  { id: "p8", type: "pulseira", name: "Pulseira Modelo 8", price: 0, img: "pulseiras/WhatsApp Image 2026-10-24 at 22.45.16 (1).jpeg" },
+const PRODUCTS = [
+  { id: "m1", type: "militar", name: "Militar Alpine", price: 0, img: `${R}/Militar Alpine.png` },
+  { id: "m2", type: "militar", name: "Militar Alpine Flyer", price: 0, img: `${R}/Militar Alpine Flyer.png` },
+  { id: "m3", type: "militar", name: "Militar Kaky", price: 0, img: `${R}/Militar kaky.png` },
+  { id: "m4", type: "militar", name: "Militar Kaky Sea", price: 0, img: `${R}/Militar Kaky sea.png` },
+  { id: "m5", type: "militar", name: "Militar Terra Steel", price: 0, img: `${R}/Militar terra Steel.png` },
+  { id: "m6", type: "militar", name: "Militar Terra Titan", price: 0, img: `${R}/Militar Terra titan.png` },
+
+  { id: "cl1", type: "classic", name: "Classic Amphibious Green", price: 0, img: `${R}/Classic amphibious green_.png` },
+  { id: "cl2", type: "classic", name: "Classic Black Pearl", price: 0, img: `${R}/Classic black pearl.png` },
+  { id: "cl3", type: "classic", name: "Classic Pilot Aircraft", price: 0, img: `${R}/Classic pilot aircraft.png` },
+  { id: "cl4", type: "classic", name: "Classic Pilot Meeting", price: 0, img: `${R}/Classic pilot meeting.png` },
+
+  { id: "d1", type: "diver", name: "Diver 50's Bronzer", price: 0, img: `${R}/Diver 50_s bronzer.png` },
+  { id: "d2", type: "diver", name: "Diver Ocean-Master", price: 0, img: `${R}/Diver Ocean-master.png` },
+  { id: "d3", type: "diver", name: "Diver BB Charcoal", price: 0, img: `${R}/Diver bb charcoal.png` },
+  { id: "d4", type: "diver", name: "Diver Emerald SKX", price: 0, img: `${R}/Diver emerald skx.png` },
+  { id: "d5", type: "diver", name: "Diver Marine Charcoal", price: 0, img: `${R}/Diver marine charcoal.png` },
 ];
 
 // Etapas do "Monte o seu relógio".
